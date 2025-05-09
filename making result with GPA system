@@ -1,0 +1,59 @@
+# Assignment: Making Result with GPA System
+# Student Name: Sadia Akhtar Mim
+# ID/Roll: 21056000
+# Department: Faculty of Agricultural Economics and Rural Development
+# University: Gazipur Agricultural University
+
+import pandas as pd
+
+# Function to calculate grade point
+def get_grade_point(marks):
+    if marks >= 85:
+        return 5.00
+    elif marks >= 80:
+        return 4.00
+    elif marks >= 75:
+        return 3.50
+    elif marks >= 70:
+        return 3.00
+    elif marks >= 50:
+        return 2.50
+    elif marks >= 40:
+        return 2.00
+    else:
+        return 0.00
+
+# Function to calculate GPA
+def calculate_gpa(statistics, finance, economics):
+    points = [get_grade_point(statistics), get_grade_point(finance), get_grade_point(economics)]
+    if 0.00 in points:
+        return 0.00
+    return round(sum(points) / len(points), 2)
+
+# Student data
+students = [
+    {'Name': 'Sadia', 'Roll': 101, 'Statistics': 85, 'Finance': 78, 'Economics': 90},
+    {'Name': 'Sadman', 'Roll': 102, 'Statistics': 60, 'Finance': 72, 'Economics': 80},
+    {'Name': 'Kafi', 'Roll': 103, 'Statistics': 90, 'Finance': 88, 'Economics': 92},
+    {'Name': 'Sima', 'Roll': 104, 'Statistics': 45, 'Finance': 55, 'Economics': 70},
+    {'Name': 'Avi', 'Roll': 105, 'Statistics': 70, 'Finance': 65, 'Economics': 60},
+    {'Name': 'Jui', 'Roll': 106, 'Statistics': 30, 'Finance': 45, 'Economics': 50},
+    {'Name': 'Simul', 'Roll': 107, 'Statistics': 75, 'Finance': 78, 'Economics': 79},
+    {'Name': 'Tania', 'Roll': 108, 'Statistics': 65, 'Finance': 60, 'Economics': 70},
+    {'Name': 'Raju', 'Roll': 109, 'Statistics': 50, 'Finance': 45, 'Economics': 40},
+    {'Name': 'Farjana', 'Roll': 110, 'Statistics': 80, 'Finance': 80, 'Economics': 80},
+    {'Name': 'Mamun', 'Roll': 111, 'Statistics': 90, 'Finance': 70, 'Economics': 50},
+    {'Name': 'Lija', 'Roll': 112, 'Statistics': 77, 'Finance': 68, 'Economics': 58},
+    {'Name': 'Sahin', 'Roll': 113, 'Statistics': 35, 'Finance': 42, 'Economics': 40},
+    {'Name': 'koly', 'Roll': 114, 'Statistics': 88, 'Finance': 82, 'Economics': 86},
+    {'Name': 'Mila', 'Roll': 115, 'Statistics': 45, 'Finance': 50, 'Economics': 47},
+    {'Name': 'Nadia', 'Roll': 116, 'Statistics': 64, 'Finance': 62, 'Economics': 66},
+    {'Name': 'Joyosri', 'Roll': 117, 'Statistics': 55, 'Finance': 58, 'Economics': 52},
+]
+
+# Calculate GPA for each student
+for student in students:
+    gpa = calculate_gpa(student['Statistics'], student['Finance'], student['Economics'])
+    student['GPA'] = gpa
+
+# Create DataFrame and display result
